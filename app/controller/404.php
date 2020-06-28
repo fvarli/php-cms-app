@@ -1,3 +1,5 @@
+<?php
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -408,6 +410,3 @@
 </a>
 </body>
 </html>
-
-<?php
-?>
