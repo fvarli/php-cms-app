@@ -8,3 +8,11 @@ function admin_controller($controller_name){
 function admin_view($view_name){
     return PATH . '/admin/view/' . $view_name . '.php';
 }
+
+function admin_url($url = false){
+    return URL . '/admin/' . $url;
+}
+
+function admin_public_url($url = false){
+    return URL . '/admin/public/' . $url;
+}
