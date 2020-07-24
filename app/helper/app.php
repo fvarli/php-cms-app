@@ -13,3 +13,8 @@ function route($index){
     global $route;
     return isset($route[$index]) ? $route[$index] : false;
 }
+
+function settings($name){
+    global $settings;
+    return isset($settings[$name]) ? $settings[$name] : false;
+}
