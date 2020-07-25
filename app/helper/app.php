@@ -6,7 +6,7 @@ function controller($controller_name){
 }
 
 function view($view_name){
-    return PATH . '/app/view/' . $view_name . '.php';
+    return PATH . '/app/view/' . settings('theme') . '/' . $view_name . '.php';
 }
 
 function route($index){

@@ -5,5 +5,5 @@ function site_url($url = false){
 }
 
 function public_url($url = false){
-    return URL . '/public/' . $url;
+    return URL . '/public/' . settings('theme') . '/' . $url;
 }

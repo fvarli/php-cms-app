@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="<?=public_url('test.css')?>">
 </head>
 <body>
-<h3>First</h3>
-<?=site_url('admin');?>
+<h1>Theme 1</h1>
 </body>
 </html>
