@@ -4,7 +4,7 @@ session_start();
 ob_start();
 
 function load_class($class_name){
-    require __DIR__ . '/classes' . strtolower($class_name) . '.php';
+    require __DIR__ . '/classes/' . strtolower($class_name) . '.php';
 }
 spl_autoload_register('load_class');
 

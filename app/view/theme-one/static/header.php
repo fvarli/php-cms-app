@@ -5,15 +5,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?=$meta['title']?></title>
+    <title><?= $meta['title'] ?></title>
 
-    <?php if(isset($meta['description'])):?>
-        <meta name="description" content="<?=$meta['description']?>">
-    <?php endif;?>
+    <?php if (isset($meta['description'])): ?>
+        <meta name="description" content="<?= $meta['description'] ?>">
+    <?php endif; ?>
 
-    <?php if(isset($meta['keywords'])):?>
-        <meta name="description" content="<?=$meta['keywords']?>">
-    <?php endif;?>
+    <?php if (isset($meta['keywords'])): ?>
+        <meta name="description" content="<?= $meta['keywords'] ?>">
+    <?php endif; ?>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -27,14 +27,14 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="<?=public_url('styles/main.css')?>">
+    <link rel="stylesheet" href="<?= public_url('styles/main.css') ?>">
 
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="<?=site_url()?>"><?=settings('logo_title')?></a>
+        <a class="navbar-brand" href="<?= site_url() ?>"><?= settings('logo_title') ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -66,10 +66,34 @@
                     <a class="nav-link" href="#">İletişim</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="<?=settings('search_placeholder')?>" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0 mr-3">
+                <input class="form-control mr-sm-2" type="search" placeholder="<?= settings('search_placeholder') ?>"
+                       aria-label="Search">
                 <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
             </form>
+            <?php if (session('user_id')): ?>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?=session('user_name')?>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="<?= site_url('my_profile') ?>">My Profile</a>
+                        <a class="dropdown-item" href="<?= site_url('logout') ?>">Logout</a>
+                    </div>
+                </div>
+            <?php else: ?>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Giriş Yap
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="<?= site_url('login') ?>">Giriş Yap</a>
+                        <a class="dropdown-item" href="<?= site_url('sign_up') ?>">Kayıt Ol</a>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </nav>
