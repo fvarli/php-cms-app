@@ -27,6 +27,66 @@
                         <input type="text" name="settings[keywords]" value="<?=settings('keywords')?>">
                     </div>
                 </li>
+            </ul>
+            <h1>Profile Settings</h1>
+            <ul>
+                <li>
+                    <label>About Me</label>
+                    <div class="form-content">
+                        <textarea name="settings[about_me]" cols="30" rows="5"><?=settings('about_me')?></textarea>
+                    </div>
+                </li>
+                <li>
+                    <label>Facebook</label>
+                    <div class="form-content">
+                        <input type="text" name="settings[facebook]" value="<?=settings('facebook')?>">
+                    </div>
+                </li>
+                <li>
+                    <label>Twitter</label>
+                    <div class="form-content">
+                        <input type="text" name="settings[twitter]" value="<?=settings('twitter')?>">
+                    </div>
+                </li>
+                <li>
+                    <label>Instagram</label>
+                    <div class="form-content">
+                        <input type="text" name="settings[instagram]" value="<?=settings('instagram')?>">
+                    </div>
+                </li>
+                <li>
+                    <label>LinkedIn</label>
+                    <div class="form-content">
+                        <input type="text" name="settings[linkedin]" value="<?=settings('linkedin')?>">
+                    </div>
+                </li>
+            </ul>
+            <h1>Theme Settings</h1>
+            <ul>
+                <li>
+                    <label>Logo Title</label>
+                    <div class="form-content">
+                        <input type="text" name="settings[logo_title]" value="<?=settings('logo_title')?>">
+                    </div>
+                </li>
+                <li>
+                    <label>Welcome Title</label>
+                    <div class="form-content">
+                        <input type="text" name="settings[welcome_title]" value="<?=settings('welcome_title')?>">
+                    </div>
+                </li>
+                <li>
+                    <label>Welcome Content</label>
+                    <div class="form-content">
+                        <textarea name="settings[welcome_content]" cols="30" rows="5"><?=settings('welcome_content')?></textarea>
+                    </div>
+                </li>
+                <li>
+                    <label>Search Placeholder</label>
+                    <div class="form-content">
+                        <input type="text" name="settings[search_placeholder]" value="<?=settings('search_placeholder')?>">
+                    </div>
+                </li>
                 <li>
                     <label>Site Themes</label>
                     <div class="form-content">
