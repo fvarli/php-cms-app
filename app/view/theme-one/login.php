@@ -25,7 +25,7 @@
                     <input type="password" value="<?=post('password')?>" class="form-control" name="password" id="password" placeholder="*******">
                 </div>
                 <input type="hidden" name="submit" value="1">
-                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>
 
