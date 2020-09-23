@@ -10,12 +10,38 @@
     <title>Admin</title>
 
     <!--styles-->
-    <link rel="stylesheet" href="<?=admin_public_url('styles/main.css')?>">
+    <link rel="stylesheet" href="<?=admin_public_url('styles/main.css?='.time())?>">
+    <link rel="shortcut icon" href="/php-cms-app/admin/view/favicon.ico">
+
 
     <!--scripts-->
     <script src="<?=admin_public_url('scripts/jquery-1.12.2.min.js')?>"></script>
+    <script src="<?=admin_public_url('scripts/jquery-ui.min.js')?>"></script>
     <!--    <script src="https://cdn.ckeditor.com/4.5.7/basic/ckeditor.js"></script>-->
     <script src="<?=admin_public_url('scripts/admin.js')?>"></script>
+
+    <style>
+        .menu-container .handle{
+            width: 15px;
+            height: 15px;
+            background: #ccc;
+            position: absolute;
+            top: 15px;
+            right: -15px;
+            cursor: pointer;
+        }
+        .menu-container form>ul li{
+            background: #f5f5f5;
+            overflow: inherit;
+        }
+        .menu-container form>ul li.ui-sortable-helper{
+            box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+        }
+        .ui-sortable-helper{
+            background: #f7ffd8 !important;
+            visibility: visible !important;
+        }
+    </style>
 
 </head>
 <body>
@@ -104,3 +130,9 @@
 
 <!--content-->
 <div class="content">
+
+    <?php if(isset($error)): ?>
+        <div class="message error box-">
+            <?=$error;?>
+        </div>
+    <?php endif; ?>

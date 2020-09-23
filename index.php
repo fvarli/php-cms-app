@@ -2,7 +2,9 @@
 
 require __DIR__ . '/app/init.php';
 
-$route = array_filter(explode('/', $_SERVER['REQUEST_URI']));
+$routeExplode = explode('?',$_SERVER['REQUEST_URI']);
+
+$route = array_filter(explode('/', $routeExplode[0]));
 
 if(SUBFOLDER === true){
     array_shift($route);

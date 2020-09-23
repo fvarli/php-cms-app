@@ -1,8 +1,3 @@
-/**
- * @author      Tayfun Erbilen
- * @web         http://erbilen.net
- * @mail        tayfunerbilen@gmail.com
- */
 $(function () {
 
     $('.box >h3').append('<button type="button" class="toggle"><span class="fa fa-caret-up"></span></button>');
@@ -82,5 +77,21 @@ $(function () {
     if ($('#editor').length) {
         CKEDITOR.replace('editor');
     }
+
+    $('.menu').sortable({
+        handle: '.handle',
+        update: function (event, ui) {
+            $('#menu >li').each(function () {
+                let subMenu = $('li', this);
+                if(subMenu.length){
+                    let index = $(this).index();
+                    subMenu.each(function () {
+                        $('input:eq(0)', this).attr('name', 'sub_title_' + index + '[]');
+                        $('input:eq(1)', this).attr('name', 'sub_url_' + index + '[]');
+                    });
+                }
+            });
+        }
+    });
 
 });

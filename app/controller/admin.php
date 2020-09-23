@@ -14,14 +14,19 @@ $menu_list = [
         'title' => 'Home',
         'icon' => 'tachometer'
     ],
-    'users' =>[
-      'title' => 'Users',
-      'icon' => 'user',
-      'submenu' => [
-          'add_user' => 'Add User',
-          'users' => 'User List'
-      ]
+    'menu' => [
+        'title' => 'Menu',
+        'icon' => 'bars'
     ],
+    'users' =>[
+        'title' => 'Users',
+        'icon' => 'user',
+        'submenu' => [
+            'add_user' => 'Add User',
+            'users' => 'User List'
+        ]
+    ],
+
     'settings' => [
         'title' => 'Settings',
         'icon' => 'cog'
