@@ -20,11 +20,11 @@ $menu_list = [
     ],
     'users' =>[
         'title' => 'Users',
-        'icon' => 'user',
-        'submenu' => [
-            'add_user' => 'Add User',
-            'users' => 'User List'
-        ]
+        'icon' => 'user'
+        //'submenu' => [
+        //    'add_user' => 'Add User',
+        //    'users' => 'User List'
+        //]
     ],
 
     'settings' => [

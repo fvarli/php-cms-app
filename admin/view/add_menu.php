@@ -39,9 +39,10 @@
                     '                        <input type="text" name="title[]" placeholder="Menu Name">\n' +
                     '                        <input type="text" name="url[]" placeholder="Menu Link">\n' +
                     '                    </div>' +
-                    '<div class="sub-menu"><ul></ul></div>\n' +
+                    '<div class="sub-menu"><ul class="menu"></ul></div>\n' +
                     '                    <a href="#" class="add-submenu btn">Add Sub Menu</a>\n' +
                     '                </li>');
+                $('.menu').sortable();
                 e.preventDefault();
             });
 
