@@ -1,21 +1,32 @@
 <?php
 
-if(!permission('users', 'edit')){
+if(!permission('contact', 'edit')){
     permission_page();
 }
 
 $id = get('id');
 if (!$id) {
-    header('Location:' . admin_url('users'));
+    header('Location:' . admin_url('contact'));
     exit;
 }
 
-$row = $db->from('users')
-    ->where('user_id', $id)
+$row = $db->from('contact')
+    ->join('users','users.user_id = contact.contact_read_user','left')
+    ->where('contact_id', $id)
     ->first();
 if (!$row) {
-    header('Location:' . admin_url('users'));
+    header('Location:' . admin_url('contact'));
     exit;
+}
+
+if($row['contact_read'] == 0 ){
+    $db->update('contact')
+        ->where('contact_id', $id)
+        ->set([
+            'contact_read' => 1,
+            'contact_read_date' => date('Y-m-d H:i:s'),
+            'contact_read_user' => session('user_id')
+        ]);
 }
 
 if (post('submit')){
@@ -40,6 +51,5 @@ if (post('submit')){
     }
 }
 
-$permissions = json_decode($row['user_permissions'], true);
 
-require admin_view('edit_user');
+require admin_view('view_contact');

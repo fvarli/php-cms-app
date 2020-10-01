@@ -1,5 +1,9 @@
 <?php
 
+if(!permission('menu', 'add')){
+    permission_page();
+}
+
 if(post('submit')){
 
     $menu = [];

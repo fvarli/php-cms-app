@@ -9,6 +9,6 @@ return [
         'name' => 'php_cms_app',
         'host' => 'localhost',
         'user' => 'root',
-        'pass' => 'hyOP.28!dsEd'
+        'pass' => ''
     ]
 ];

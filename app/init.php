@@ -2,6 +2,7 @@
 
 session_start();
 ob_start();
+date_default_timezone_set('Europe/Istanbul');
 
 function load_class($class_name){
     require __DIR__ . '/classes/' . strtolower($class_name) . '.php';

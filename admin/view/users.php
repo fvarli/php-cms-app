@@ -15,8 +15,11 @@
             <tr>
                 <th>User Name</th>
                 <th class="hide">Email</th>
+                <th class="hide">User Role</th>
                 <th class="hide">Register Date</th>
+                <?php if(permission('users', 'edit') || permission('users', 'delete')):?>
                 <th class="">Process</th>
+                <?endif;;?>
             </tr>
             </thead>
             <tbody>
@@ -31,12 +34,20 @@
                         <a href="#"><?= $row['user_email']; ?></a>
                     </td>
                     <td class="hide">
+                        <a href="#"><?= user_ranks($row['user_rank']); ?></a>
+                    </td>
+                    <td class="hide">
                         <a href="#"><?= date('d/m/Y H:i:s', strtotime($row['user_date'])); ?></a>
                     </td>
                     <td>
-                        <a href="<?= admin_url('edit_user?id=' . $row['user_id']); ?>" class="btn">Edit</a>
-                        <a href="<?= admin_url('delete?table=users&column=user_id&id=' . $row['user_id']); ?>"
+                        <?php if(permission('users', 'edit')):?>
+                            <a href="<?= admin_url('edit_user?id=' . $row['user_id']); ?>" class="btn">Edit</a>
+                        <?php endif;?>
+
+                        <?php if(permission('users', 'delete')):?>
+                            <a href="<?= admin_url('delete?table=users&column=user_id&id=' . $row['user_id']); ?>"
                            onclick="return confirm('Are you sure?')" class="btn">Delete</a>
+                        <?php endif;?>
                     </td>
                 </tr>
             <?php endforeach; ?>

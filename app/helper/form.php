@@ -27,16 +27,14 @@ function form_control(...$except_these){
     $data = [];
     $error = false;
     foreach ($_POST as $key => $value){
-        if(!in_array($key, $except_these) && !post($key)){
+        if (!in_array($key, $except_these) && !post($key)){
             $error = true;
-        }else{
+        } else {
             $data[$key] = post($key);
         }
     }
-
     if ($error){
         return false;
     }
-
     return $data;
 }
