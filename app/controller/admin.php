@@ -30,6 +30,16 @@ $menu_list = [
             'delete' => 'Delete'
         ]
     ],
+    'pages' => [
+        'title' => 'Pages',
+        'icon' => 'file',
+        'permissions' => [
+            'show' => 'Show',
+            'add'  => 'Add',
+            'edit' => 'Edit',
+            'delete' => 'Delete'
+        ]
+    ],
     'categories' => [
         'title' => 'Categories',
         'icon' => 'folder',

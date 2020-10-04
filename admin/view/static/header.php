@@ -17,6 +17,7 @@
         <!--scripts-->
         <script src="<?= admin_public_url('scripts/jquery-1.12.2.min.js') ?>"></script>
         <script src="<?= admin_public_url('scripts/jquery-ui.min.js') ?>"></script>
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <!--    <script src="https://cdn.ckeditor.com/4.5.7/basic/ckeditor.js"></script>-->
         <script> let api_url = '<?=admin_url('api')?>'</script>
         <script src="<?= admin_public_url('scripts/api.js') ?>"></script>
