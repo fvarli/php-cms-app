@@ -22,7 +22,7 @@ if (post('submit')){
             ->first();
 
         if ($query){
-            $error = 'There is already the same category.'. '<strong>' . $category_name . '</strong>';
+            $error = 'There is already the same category:'. '<strong>' . $category_name . '</strong>';
         } else {
 
             $query = $db->insert('categories')
@@ -44,4 +44,4 @@ if (post('submit')){
 
 }
 
-require admin_view('add-category');
+require admin_view('add_category');
