@@ -17,7 +17,6 @@
             <tr>
                 <th class="hide">Title</th>
                 <th class="hide">Date</th>
-                <th class="hide">Date</th>
                 <?php if(permission('contact', 'edit') || permission('contact', 'delete')):?>
                 <th class="">Process</th>
                 <?endif;;?>
@@ -27,9 +26,9 @@
             <?php foreach ($query as $row): ?>
                 <tr>
                     <td class="hide">
-                        <a href="#"><?= $row['page-title']; ?></a>
+                        <a href="#"><?= $row['page_title']; ?></a>
                     </td>
-                    <td class="hide" title="<?=date("d/m/Y/", strtotime($row['contact_date']));?>">
+                    <td class="hide" title="<?=date("d/m/Y/", strtotime($row['page_date']));?>">
                         <a href="#"><?= timeConvert($row['page_date']); ?></a>
                     </td>
 
