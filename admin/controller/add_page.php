@@ -14,8 +14,8 @@ if (post('submit')){
     $page_content = post('page_content');
     $page_seo = json_encode(post('page_seo'));
 
-    if (!$page_title || !$page_url || !$page_content){
-        $error = 'Please enter category name.';
+    if (!$page_url || !$page_content){
+        $error = 'Please enter page name.';
     } else {
 
         // check if there is same page
@@ -27,7 +27,7 @@ if (post('submit')){
             $error = "There is already the same page". '<strong>' . $page_title . '</strong>';
         } else {
 
-            $query = $db->insert('categories')
+            $query = $db->insert('pages')
                 ->set([
                     'page_title' => $page_title,
                     'page_content' => $page_content,
