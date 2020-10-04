@@ -107,5 +107,23 @@ $(function () {
         });
     });
 
+    $('.table-sortable').sortable({
+        update: function (event, ui) {
+            var postData = $(this).sortable('serialize');
+            postData += '&table=' + $(this).data('table');
+            postData += '&where=' + $(this).data('where');
+            postData += '&column=' + $(this).data('column');
+            $.post(api_url + '/table_sort', postData, function(response){
+                if (response.success){
+                    $('.success-msg').show().find('>div').html(response.success);
+                }
+            }, 'json');
+        }
+    });
+
+    $('.success-close-btn').on('click', function (e) {
+        $(this).parent().hide();
+        e.preventDefault();
+    });
 
 });

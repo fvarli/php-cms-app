@@ -30,6 +30,16 @@ $menu_list = [
             'delete' => 'Delete'
         ]
     ],
+    'categories' => [
+        'title' => 'Categories',
+        'icon' => 'folder',
+        'permissions' => [
+            'show' => 'Show',
+            'add'  => 'Add',
+            'edit' => 'Edit',
+            'delete' => 'Delete'
+        ]
+    ],
     'contact' => [
         'title' => 'Contact Messages',
         'icon' => 'envelope',

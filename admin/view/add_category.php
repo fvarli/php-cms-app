@@ -22,13 +22,34 @@
         <script src="<?= admin_public_url('scripts/api.js') ?>"></script>
         <script src="<?= admin_public_url('scripts/admin.js') ?>"></script>
 
+        <style>
+            .menu-container .handle {
+                width: 15px;
+                height: 15px;
+                background: #ccc;
+                position: absolute;
+                top: 15px;
+                right: -15px;
+                cursor: pointer;
+            }
+
+            .menu-container form > ul li {
+                background: #f5f5f5;
+                overflow: inherit;
+            }
+
+            .menu-container form > ul li.ui-sortable-helper {
+                box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+            }
+
+            .ui-sortable-helper {
+                background: #f7ffd8 !important;
+                visibility: visible !important;
+            }
+        </style>
+
     </head>
 <body>
-
-    <div class="success-msg">
-        <a href="#" class="success-close-btn"><i class="fa fa-times"></i></a>
-        <div></div>
-    </div>
 
 <?php if (session('user_rank') && session('user_rank') != 3): ?>
 
