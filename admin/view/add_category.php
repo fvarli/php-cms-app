@@ -1,47 +1,69 @@
-<?php
+<?php require admin_view('static/header') ?>
 
-if (!permission('categories', 'add')){
-    permission_page();
-}
+    <div class="box-">
+        <h1>
+            Add Category
+        </h1>
+    </div>
 
-if (post('submit')){
+    <div class="clear" style="height: 10px;"></div>
 
-    $category_name = post('category_name');
-    $category_url = permalink(post('category_url'));
-    if (!post('category_url')) {
-        $category_url = permalink($category_name);
-    }
-    $category_seo = json_encode(post('category_seo'));
+    <div class="box-" tab>
 
-    if (!$category_name || !$category_url){
-        $error = 'Please enter category name';
-    } else {
+        <div class="admin-tab">
+            <ul tab-list>
+                <li>
+                    <a href="#">General</a>
+                </li>
+                <li>
+                    <a href="#">SEO</a>
+                </li>
+            </ul>
+        </div>
 
-        $query = $db->from('categories')
-            ->where('category_url', $category_url)
-            ->first();
+        <form action="" method="post" class="form label">
+            <div class="tab-container">
+                <div tab-content>
+                    <ul>
+                        <li>
+                            <label>Category Name</label>
+                            <div class="form-content">
+                                <input type="text" name="category_name" value="<?= post('category_name') ?>">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div tab-content>
+                    <ul>
+                        <li>
+                            <label>SEO Url</label>
+                            <div class="form-content">
+                                <input type="text" name="category_url" value="<?=post('category_url')?>">
+                                <p>If you don't enter, it takes category name.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <label>SEO Title</label>
+                            <div class="form-content">
+                                <input type="text" name="category_seo[title]">
+                            </div>
+                        </li>
+                        <li>
+                            <label>SEO Description</label>
+                            <div class="form-content">
+                                <textarea name="category_seo[description]" cols="30" rows="5"></textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul>
+                    <li class="submit">
+                        <input type="hidden" name="submit" value="1">
+                        <button type="submit">Save</button>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
 
-        if ($query){
-            $error = 'There is already the same category:'. '<strong>' . $category_name . '</strong>';
-        } else {
-
-            $query = $db->insert('categories')
-                ->set([
-                    'category_name' => $category_name,
-                    'category_url' => $category_url,
-                    'category_seo' => $category_seo
-                ]);
-
-            if ($query){
-                header('Location:' . admin_url('categories'));
-            } else {
-                $error = 'Bir sorun oluştu.';
-            }
-
-        }
-
-    }
-
-}
-
-require admin_view('add_category');
+<?php require admin_view('static/footer') ?>
