@@ -11,7 +11,7 @@
 
         <!--styles-->
         <link rel="stylesheet" href="<?= admin_public_url('styles/main.css?=' . time()) ?>">
-        <link rel="stylesheet" href="<?= admin_public_url('styles/extra.css?=' . time()) ?>">
+        <link rel="stylesheet" href="<?= admin_public_url('styles/extras.css?=' . time()) ?>">
         <link rel="shortcut icon" href="/php-cms-app/admin/view/favicon.ico">
 
 
