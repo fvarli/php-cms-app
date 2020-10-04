@@ -5,7 +5,7 @@ if(!permission('pages', 'show')){
 }
 
 
-$totalRecord = $db->from('pages')->select('count(pages_id) as total')->total();
+$totalRecord = $db->from('pages')->select('count(page_id) as total')->total();
 
 
 $pageLimit = 10;
@@ -13,7 +13,7 @@ $pageParam = 'page';
 $pagination = $db->pagination($totalRecord, $pageLimit, $pageParam);
 
 $query = $db->from('pages')
-    ->orderBy('pages_id', 'DESC')
+    ->orderBy('page_id', 'DESC')
     ->limit($pagination['start'], $pagination['limit'])
     ->all();
 
