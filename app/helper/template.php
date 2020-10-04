@@ -32,3 +32,12 @@ function menu($id){
         return false;
     }
 }
+
+function cut_text($str, $limit = 220){
+    $str = strip_tags(htmlspecialchars_decode($str));
+    $length = strlen($str);
+    if ($length > $limit){
+        $str = mb_substr($str, 0, $limit, 'UTF8') . '...';
+    }
+    return $str;
+}
