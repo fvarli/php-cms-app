@@ -19,7 +19,7 @@
                 <th class="hide">Date</th>
                 <?php if(permission('contact', 'edit') || permission('contact', 'delete')):?>
                 <th class="">Process</th>
-                <?endif;;?>
+                <?endif;?>
             </tr>
             </thead>
             <tbody>

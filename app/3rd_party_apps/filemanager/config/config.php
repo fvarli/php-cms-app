@@ -191,7 +191,7 @@ $config = array(
     */
 
     'access_keys' => array(
-        '9plmndassadab56eqqwee67/*ewqwqeqw-eqewq/*/ddsacnjknkjqweqwsd'
+        'test'
     ),
 
     //--------------------------------------------------------------------------------------------------------

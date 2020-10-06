@@ -7,7 +7,7 @@ $(function () {
         external_filemanager_path:app_url + "/3rd_party_apps/filemanager/",
         filemanager_title:"Responsive Filemanager" ,
         external_plugins: { "filemanager" :app_url + "/3rd_party_apps/filemanager/plugin.min.js"},
-        filemanager_access_key:"9plmndassadab56eqqwee67/*ewqwqeqw-eqewq/*/ddsacnjknkjqweqwsd",
+        filemanager_access_key:"test",
 
     });
 
