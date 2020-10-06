@@ -3,6 +3,7 @@
 define('PATH', realpath('.'));
 define('SUBFOLDER', true);
 define('URL', 'http://localhost/php-cms-app');
+define('SUBFOLDER_NAME', 'php-cms-app');
 
 return [
     'db' => [

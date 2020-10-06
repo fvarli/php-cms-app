@@ -20,6 +20,7 @@
         <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <!--    <script src="https://cdn.ckeditor.com/4.5.7/basic/ckeditor.js"></script>-->
         <script> let api_url = '<?=admin_url('api')?>'</script>
+        <script> let app_url = '<?=site_url('app')?>'</script>
         <script src="<?= admin_public_url('scripts/api.js') ?>"></script>
         <script src="<?= admin_public_url('scripts/admin.js') ?>"></script>
 

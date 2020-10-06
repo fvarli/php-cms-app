@@ -1,4 +1,7 @@
 <?php
+
+require '../../config.php';
+
 $version = "9.14.0";
 if (session_id() == '') {
     session_start();
@@ -31,7 +34,7 @@ setlocale(LC_CTYPE, 'en_US'); //correct transliteration
 |
 */
 
-define('USE_ACCESS_KEYS', false); // TRUE or FALSE
+define('USE_ACCESS_KEYS', true); // TRUE or FALSE
 
 /*
 |--------------------------------------------------------------------------
@@ -76,7 +79,7 @@ $config = array(
     | with start and final /
     |
     */
-    'upload_dir' => '/source/',
+    'upload_dir' => (SUBFOLDER_NAME ? '/' . SUBFOLDER_NAME : null) .'/upload/files/',
     /*
     |--------------------------------------------------------------------------
     | relative path from filemanager folder to upload folder
@@ -85,7 +88,7 @@ $config = array(
     | with final /
     |
     */
-    'current_path' => '../source/',
+    'current_path' => '../../../upload/files/',
 
     /*
     |--------------------------------------------------------------------------
@@ -96,7 +99,7 @@ $config = array(
     | DO NOT put inside upload folder
     |
     */
-    'thumbs_base_path' => '../thumbs/',
+    'thumbs_base_path' => '../../../upload/thumbs/',
 
     /*
     |--------------------------------------------------------------------------
@@ -187,7 +190,9 @@ $config = array(
     |
     */
 
-    'access_keys' => array(),
+    'access_keys' => array(
+        '9plmndassadab56eqqwee67/*ewqwqeqw-eqewq/*/ddsacnjknkjqweqwsd'
+    ),
 
     //--------------------------------------------------------------------------------------------------------
     // YOU CAN COPY AND CHANGE THESE VARIABLES INTO FOLDERS config.php FILES TO CUSTOMIZE EACH FOLDER OPTIONS
