@@ -11,6 +11,17 @@ $(function () {
 
     });
 
+    tinymce.init({
+        selector:'textarea.short-editor',
+        height: '120px',
+        plugins: 'print preview powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker textpattern noneditable help formatpainter pageembed charmap mentions quickbars linkchecker emoticons advtable',
+        external_filemanager_path:app_url + "/3rd_party_apps/filemanager/",
+        filemanager_title:"Responsive Filemanager" ,
+        external_plugins: { "filemanager" :app_url + "/3rd_party_apps/filemanager/plugin.min.js"},
+        filemanager_access_key:"test",
+
+    });
+
     $('.box >h3').append('<button type="button" class="toggle"><span class="fa fa-caret-up"></span></button>');
 
     $(document).on('click', 'button.toggle', function (e) {

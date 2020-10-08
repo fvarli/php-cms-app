@@ -2,9 +2,9 @@
 
     <div class="box-">
         <h1>
-            Pages
-            <?php if (permission('pages', 'add')):?>
-                <a href="<?= admin_url('add_page ')?>">Add New</a>
+            Subjects
+            <?php if (permission('posts', 'add')):?>
+                <a href="<?= admin_url('add_post ')?>">Add New</a>
             <?php endif;?>
         </h1>
     </div>
@@ -17,7 +17,7 @@
             <tr>
                 <th class="hide">Title</th>
                 <th class="hide">Date</th>
-                <?php if(permission('pages', 'edit') || permission('pages', 'delete')):?>
+                <?php if(permission('posts', 'edit') || permission('posts', 'delete')):?>
                 <th class="">Process</th>
                 <?endif;?>
             </tr>
@@ -33,13 +33,13 @@
                     </td>
 
                     <td>
-                        <a href="<?= site_url('page/' . $row['page_url']) ?>" class="btn" target="_blank">View</a>
-                        <?php if(permission('pages', 'edit')):?>
-                            <a href="<?= admin_url('edit_page?id=' . $row['page_id']); ?>" class="btn">Edit</a>
+                        <a href="<?= site_url('post/' . $row['post_url']) ?>" class="btn" target="_blank">View</a>
+                        <?php if(permission('posts', 'edit')):?>
+                            <a href="<?= admin_url('edit_page?id=' . $row['post_id']); ?>" class="btn">Edit</a>
                         <?php endif;?>
 
-                        <?php if(permission('pages', 'delete')):?>
-                            <a href="<?= admin_url('delete?table=pages&column=page_id&id=' . $row['page_id']); ?>"
+                        <?php if(permission('posts', 'delete')):?>
+                            <a href="<?= admin_url('delete?table=posts&column=post_id&id=' . $row['post_id']); ?>"
                            onclick="return confirm('Are you sure?')" class="btn">Delete</a>
                         <?php endif;?>
                     </td>

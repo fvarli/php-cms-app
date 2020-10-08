@@ -40,6 +40,16 @@ $menu_list = [
             'delete' => 'Delete'
         ]
     ],
+    'posts' => [
+        'title' => 'Subjects',
+        'icon' => 'rss',
+        'permissions' => [
+            'show' => 'Show',
+            'add'  => 'Add',
+            'edit' => 'Edit',
+            'delete' => 'Delete'
+        ]
+    ],
     'categories' => [
         'title' => 'Categories',
         'icon' => 'folder',

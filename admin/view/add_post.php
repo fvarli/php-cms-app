@@ -2,7 +2,7 @@
 
     <div class="box-">
         <h1>
-            Add Page
+            Add Subject
         </h1>
     </div>
 
@@ -26,15 +26,31 @@
                 <div tab-content>
                     <ul>
                         <li>
-                            <label>Page Title</label>
+                            <label>Subject Title</label>
                             <div class="form-content">
-                                <input type="text" name="page_title" value="<?= post('page_title') ?>">
+                                <input type="text" name="post_title" value="<?= post('post_title') ?>">
                             </div>
                         </li>
                         <li>
-                            <label>Page Content</label>
+                            <label>Subject Short Content</label>
                             <div class="form-content">
-                                <textarea name="page_content" class="editor" id="" cols="30" rows="10"><?=post('page_content')?></textarea>
+                                <textarea name="post_short_content" class="short-editor" id="" cols="30" rows="10"><?=post('post_short_content')?></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <label>Subject Content</label>
+                            <div class="form-content">
+                                <textarea name="post_content" class="editor" id="" cols="30" rows="10"><?=post('post_content')?></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <label>Subject Category</label>
+                            <div class="form-content">
+                                <select name="post_category[]" id="" multiple>
+                                    <?php foreach ($categories as $category):?>
+                                        <option value="<?=$category['category_id'];?>"><?=$category['category_name'];?></option>
+<?php endforeach;?>
+                                </select>
                             </div>
                         </li>
                     </ul>
