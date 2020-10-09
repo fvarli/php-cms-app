@@ -26,10 +26,10 @@
             <?php foreach ($query as $row): ?>
                 <tr>
                     <td class="hide">
-                        <a href="#"><?= $row['page_title']; ?></a>
+                        <a href="#"><?= $row['post_title']; ?></a>
                     </td>
-                    <td class="hide" title="<?=date("d/m/Y/", strtotime($row['page_date']));?>">
-                        <a href="#"><?= timeConvert($row['page_date']); ?></a>
+                    <td class="hide" title="<?=date("d/m/Y/", strtotime($row['post_date']));?>">
+                        <a href="#"><?= timeConvert($row['post_date']); ?></a>
                     </td>
 
                     <td>
