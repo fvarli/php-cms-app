@@ -68,7 +68,7 @@ if (post('submit')) {
 
                 $postId = $id;
 
-                $post_tags = explode('\n', $post_tags);
+                $post_tags = explode("\n", $post_tags);
 
                 foreach ($post_tags as $tag) {
                     //check if there is tag or not
@@ -83,6 +83,7 @@ if (post('submit')) {
                                 'tag_name' => $tag,
                                 'tag_url' => permalink($tag)
                             ]);
+                        $tagId = $db->lastId();
                     } else {
                         $tagId = $row['tag_id'];
                     }

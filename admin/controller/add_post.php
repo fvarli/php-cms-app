@@ -50,7 +50,7 @@ if (post('submit')) {
 
                 $postId = $db->lastId();
 
-                $post_tags = explode('\n', $post_tags);
+                $post_tags = explode("\n", $post_tags);
 
                 foreach ($post_tags as $tag) {
                     //check if there is tag or not
