@@ -83,10 +83,7 @@ if (post('submit')) {
                             'tag_post_id' => $postId,
                             'tag_id' => $tagId
                         ]);
-                } else {
-                    $tagID = $row['tag_id'];
                 }
-
 
                 header('Location:' . admin_url('posts'));
             } else {

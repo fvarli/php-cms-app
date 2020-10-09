@@ -48,8 +48,8 @@
                         <li>
                             <label>Subject Tag</label>
                             <div class="form-content">
-                                <textarea name="post_tags" id="" cols="30"
-                                          rows="10"><?= post('post_tags') ?></textarea>
+                                <textarea name="post_tags" cols="30" rows="3"><?=post('post_tags')?></textarea>
+
                                 <p>Please enter between each tag.</p>
                             </div>
                         </li>
