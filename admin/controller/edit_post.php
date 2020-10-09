@@ -38,7 +38,7 @@ if (post('submit')) {
     $post_tags = post('post_tags');
     $post_seo = json_encode(post('post_seo'));
 
-    if (!$post_url || !$post_content || !$post_status || !$post_categories ) {
+    if (!$post_url || !$post_content || !$post_status || !$post_categories) {
         $error = 'Please enter post name.';
     } else {
 
@@ -75,36 +75,36 @@ if (post('submit')) {
                     $row = $db->from('tags')
                         ->where('tag_url', permalink($tag))
                         ->first();
+
+
+                    if (!$row) {
+                        $tagInsert = $db->insert('tags')
+                            ->set([
+                                'tag_name' => $tag,
+                                'tag_url' => permalink($tag)
+                            ]);
+                    } else {
+                        $tagId = $row['tag_id'];
+                    }
+
+                    // is there a tag related to the subject?
+
+                    $row = $db->from('post_tags')
+                        ->where('tag_post_id', $postId)
+                        ->where('tag_id', $tagId)
+                        ->first();
+
+                    if (!$row) {
+                        $db->insert('post_tags')
+                            ->set([
+                                'tag_post_id' => $postId,
+                                'tag_id' => $tagId
+                            ]);
+                    } else {
+                        $tagID = $row['tag_id'];
+                    }
+
                 }
-
-                if (!$row) {
-                    $tagInsert = $db->insert('tags')
-                        ->set([
-                           'tag_name' => $tag,
-                           'tag_url' => permalink($tag)
-                        ]);
-                } else {
-                    $tagId = $row['tag_id'];
-                }
-
-                // is there a tag related to the subject?
-
-                $row = $db->from('post_tags')
-                    ->where('tag_post_id', $postId)
-                    ->where('tag_id', $tagId)
-                    ->first();
-
-                if (!$row) {
-                    $db->insert('post_tags')
-                        ->set([
-                            'tag_post_id' => $postId,
-                            'tag_id' => $tagId
-                        ]);
-                } else {
-                    $tagID = $row['tag_id'];
-                }
-
-
                 header('Location:' . admin_url('posts'));
             } else {
                 $error = 'Something went wrong.';
