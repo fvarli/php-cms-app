@@ -45,21 +45,21 @@
                                           rows="10"><?= post('post_content') ? post('post_content') : $row['post_content']; ?></textarea>
                             </div>
                         </li>
+
                         <li>
                             <label>Subject Tag</label>
                             <div class="form-content">
-                                <textarea name="post_tags" id="" cols="30"
-                                          rows="30"><?php
-                                    if(post('post_tags')){
-                                        echo post('post_tags');
-                                    }else{
-                                        $tagsHTML = '';
-                                        foreach ($tags as $tag){
-                                            echo $tag['tag_name'] .'\n';
-                                        }
-                                        echo rtrim($tagsHTML, '\n');
+                                <input type="text" name="post_tags" value="<?php
+                                if(post('post_tags')){
+                                    echo post('post_tags');
+                                }else{
+                                    $tagsHTML = '';
+                                    foreach ($tags as $tag){
+                                        echo $tag['tag_name'] .'\n';
                                     }
-                                    ?></textarea>
+                                    echo rtrim($tagsHTML, '\n');
+                                }
+                                ?>" class="tagsinput">
                                 <p>Please enter between each tag.</p>
                             </div>
                         </li>
@@ -116,5 +116,9 @@
             </div>
         </form>
     </div>
+
+    <script>
+        let tag = ['<?=implode("','",$tagsArr)?>'];
+    </script>
 
 <?php require admin_view('static/footer') ?>

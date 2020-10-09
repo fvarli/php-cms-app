@@ -107,10 +107,7 @@
     </div>
 
     <script>
-        let tag = [
-            'deneme',
-            'test'
-        ]
+        let tag = ['<?=implode("','",$tagsArr)?>'];
     </script>
 
 <?php require admin_view('static/footer') ?>
