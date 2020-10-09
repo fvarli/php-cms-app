@@ -1,6 +1,6 @@
 <?php
 
-if (!permission('posts', 'add')) {
+if (!permission('posts', 'edit')) {
     permission_page();
 }
 
