@@ -22,7 +22,7 @@ if (post('submit')) {
     $post_tags = post('post_tags');
     $post_seo = json_encode(post('post_seo'));
 
-    if (!$post_url || !$post_content || !$post_status) {
+    if (!$post_url || !$post_content || !$post_status || !$post_categories ) {
         $error = 'Please enter page name.';
     } else {
 
