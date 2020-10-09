@@ -65,6 +65,7 @@ if (post('submit')) {
                            'tag_name' => $tag,
                            'tag_url' => permalink($tag)
                         ]);
+                    $tagId = $db->lastId();
                 } else {
                     $tagId = $row['tag_id'];
                 }
