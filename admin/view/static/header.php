@@ -17,9 +17,9 @@
         <!--scripts-->
         <script src="<?= admin_public_url('scripts/jquery-1.12.2.min.js') ?>"></script>
         <script src="<?= admin_public_url('scripts/jquery-ui.min.js') ?>"></script>
-        <script src="<?=admin_public_url('vendor/jquery_tags_input/jquery.tagsinput-revisited.min.js')?>"></script>
+        <script src="<?=admin_public_url('vendor/jquery.tagsinput/jquery.tagsinput-revisited.min.js')?>"></script>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="<?= admin_public_url('vendor/jquery_tags_input/jquery.tagsinput-revisited.min.css?=' . time()) ?>">
+        <link rel="stylesheet" href="<?= admin_public_url('vendor/jquery.tagsinput/jquery.tagsinput-revisited.min.css?=' . time()) ?>">
         <script src="https://cdn.tiny.cloud/1/xbiwycvpc2s72vwxbkjbphccz649p8xdf5tdlxjgpkrfq5fd/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
         <!--    <script src="https://cdn.ckeditor.com/4.5.7/basic/ckeditor.js"></script>-->
         <script> let api_url = '<?=admin_url('api')?>'</script>
