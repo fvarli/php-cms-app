@@ -33,7 +33,6 @@
                     </td>
 
                     <td>
-                        <a href="<?= site_url('post/' . $row['post_url']) ?>" class="btn" target="_blank">View</a>
                         <?php if(permission('posts', 'edit')):?>
                             <a href="<?= admin_url('edit_post?id=' . $row['post_id']); ?>" class="btn">Edit</a>
                         <?php endif;?>

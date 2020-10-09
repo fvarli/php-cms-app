@@ -5,7 +5,7 @@ if (!permission('posts', 'edit')) {
 }
 
 
-$id = get('edit');
+$id = get('id');
 if (!$id) {
     header('Location:' . admin_url('posts'));
     exit;
