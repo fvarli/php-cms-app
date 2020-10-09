@@ -42,7 +42,6 @@ if (post('submit')) {
                     'post_short_content' => $post_short_content,
                     'post_categories' => $post_categories,
                     'post_url' => $post_url,
-                    'post_tags' => $post_tags,
                     'post_seo' => $post_seo,
                     'post_status' => $post_status
                 ]);
