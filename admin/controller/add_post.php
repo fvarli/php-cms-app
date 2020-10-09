@@ -23,7 +23,7 @@ if (post('submit')) {
     $post_seo = json_encode(post('post_seo'));
 
     if (!$post_url || !$post_content || !$post_status || !$post_categories ) {
-        $error = 'Please enter page name.';
+        $error = 'Please enter post name.';
     } else {
 
         // check if there is same subject
@@ -38,10 +38,10 @@ if (post('submit')) {
             $query = $db->insert('posts')
                 ->set([
                     'post_title' => $post_title,
+                    'post_url' => $post_url,
                     'post_content' => $post_content,
                     'post_short_content' => $post_short_content,
                     'post_categories' => $post_categories,
-                    'post_url' => $post_url,
                     'post_seo' => $post_seo,
                     'post_status' => $post_status
                 ]);
