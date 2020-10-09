@@ -4,6 +4,22 @@ if (!permission('posts', 'add')) {
     permission_page();
 }
 
+
+$id = get('edit');
+if (!$id) {
+    header('Location:' . admin_url('posts'));
+    exit;
+}
+
+$row = $db->from('posts')
+    ->where('post_id', $id)
+    ->first();
+if (!$row) {
+    header('Location:' . admin_url('posts'));
+    exit;
+}
+
+
 $categories = $db->from('categories')
     ->orderby('category_name', 'ASC')
     ->all();
@@ -29,13 +45,15 @@ if (post('submit')) {
         // check if there is same subject
         $query = $db->from('posts')
             ->where('post_url', $post_url)
+            ->where('post_id', $id, '!=')
             ->first();
 
         if ($query) {
             $error = "There is already the same subject " . '<strong>' . $post_title . '</strong>';
         } else {
 
-            $query = $db->insert('posts')
+            $query = $db->update('posts')
+                ->where('post_id', $id)
                 ->set([
                     'post_title' => $post_title,
                     'post_url' => $post_url,
@@ -48,7 +66,7 @@ if (post('submit')) {
 
             if ($query) {
 
-                $postId = $db->lastId();
+                $postId = $id;
 
                 $post_tags = explode('\n', $post_tags);
 
@@ -98,4 +116,13 @@ if (post('submit')) {
 
 }
 
-require admin_view('add_post');
+// tags
+
+$tags = $db->from('post_tags')
+    ->join('tags', 'tags.tag_id = post_tags.tag_id')
+    ->where('tag_post_id', $id)
+    ->all();
+
+$seo = json_decode($row['post_seo'], true);
+
+require admin_view('edit_post');
