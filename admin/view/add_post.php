@@ -48,8 +48,7 @@
                         <li>
                             <label>Subject Tag</label>
                             <div class="form-content">
-                                <textarea name="post_tags" cols="30" rows="3"><?=post('post_tags')?></textarea>
-
+                                <input type="text" name="post_tags" value="<?=post('post_tags')?>" class="tagsinput">
                                 <p>Please enter between each tag.</p>
                             </div>
                         </li>
@@ -106,5 +105,12 @@
             </div>
         </form>
     </div>
+
+    <script>
+        let tag = [
+            'deneme',
+            'test'
+        ]
+    </script>
 
 <?php require admin_view('static/footer') ?>

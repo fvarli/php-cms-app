@@ -148,4 +148,10 @@ $(function () {
         e.preventDefault();
     });
 
+    $('.tagsinput').tagsInput({
+        'autocomplete': {
+            source: tags
+        }
+    });
+
 });

@@ -24,6 +24,16 @@ $categories = $db->from('categories')
     ->orderby('category_name', 'ASC')
     ->all();
 
+$all_tags = $db->from('tags')
+    ->orderby('tag_id', 'DESC')
+    ->all();
+
+$tagsArr = [];
+
+foreach ($all_tags as $tags){
+    $tagsArr[] = trim(htmlspecialchars($tags['tag_name']));
+}
+
 if (post('submit')) {
 
     $post_title = post('post_title');
@@ -68,7 +78,7 @@ if (post('submit')) {
 
                 $postId = $id;
 
-                $post_tags = explode("\n", $post_tags);
+                $post_tags = explode(",", $post_tags);
 
                 foreach ($post_tags as $tag) {
                     //check if there is tag or not
