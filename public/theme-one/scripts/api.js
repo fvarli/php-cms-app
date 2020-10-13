@@ -12,3 +12,20 @@ function contact(formId){
         }
     }, 'json');
 }
+
+function add_comment(formId){
+    var postID = $(formId).data('id'),
+        data = $(formId).serialize() + '&post_id=' + postID;
+    $.post(api_url + '/add_comment', data, function (response) {
+        if (response.error){
+            $('#comment-msg').removeClass().addClass('alert alert-danger').html(response.error).show();
+        } else if (response.success) {
+            $('#comment-msg').removeClass().addClass('alert alert-success').html(response.success).show();
+            $(formId + ' input, ' + formId + ' textarea').val('');
+        } else {
+            $('#no-comment').remove();
+            $('#comment-msg').hide().removeClass().html('');
+            $('#comments').append(response.comment);
+        }
+    }, 'json');
+}

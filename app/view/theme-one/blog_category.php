@@ -2,10 +2,11 @@
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h1>BLOG</h1>
+        <h1><?= $category['category_name'] ?></h1>
         <div class="breadcrumb-custom">
-            <a href="#">Home</a> /
-            <a href="#" class="active">Blog</a>
+            <a href="<?= site_url(); ?>">Home</a> /
+            <a href="<?= site_url('blog') ?>" class="active">Blog Category</a> /
+            <a href="<?= site_url('blog/category/' . $category['category_url']) ?>"><?= $category['category_name'] ?></a>
         </div>
     </div>
 </section>
@@ -41,16 +42,16 @@
                             <ul class="pagination">
                                 <li class="page-item">
                                     <a class="page-link"
-                                       href="<?= site_url('blog?' . $pageParam . '=' . $db->prevPage()); ?>"
+                                       href="<?= site_url('blog/category/' . $category['category_url'] . '?' . $pageParam . '=' . $db->prevPage()); ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                         <span class="sr-only">Previous</span>
                                     </a>
                                 </li>
-                                <?= $db->showPagination(site_url('blog?' . $pageParam . '=[page]'), 'active', true); ?>
+                                <?= $db->showPagination(site_url('blog/category' . $category['category_url'] . '?' . $pageParam . '=[page]'), 'active', true); ?>
                                 <li class="page-item">
                                     <a class="page-link"
-                                       href="<?= site_url('blog?' . $pageParam . '=' . $db->nextPage()); ?>"
+                                       href="<?= site_url('blog/category' . $category['category_url'] . '?' . $pageParam . '=' . $db->nextPage()); ?>"
                                        aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                         <span class="sr-only">Next</span>
@@ -74,11 +75,11 @@
             </h4>
             <ul class="list-group mb-4">
                 <?php foreach (Blog::Categories() as $category): ?>
-                    <li class="list-group-item">
+                    <li class="list-group-item <?= $category['category_url'] == route(2) ? 'active' : null; ?>">
                         <a href="<?= site_url('blog/category/' . $category['category_url']) ?>" style="color: #333;"
                            class="d-flex justify-content-between align-items-center">
                             <?= $category['category_name'] ?>
-                            <span class="badge badge-dark badge-pill"><?=$category['total'];?></span>
+                            <span class="badge badge-dark badge-pill"><?= $category['total']; ?></span>
                         </a>
                     </li>
                 <?php endforeach; ?>

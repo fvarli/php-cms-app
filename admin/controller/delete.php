@@ -8,11 +8,17 @@ if(!permission($table, 'delete')){
     permission_page();
 }
 
-$query = $db->prepare('DELETE FROM ' . $table . ' WHERE ' .  $column . '= :id');
+$query = $db->delete($table)
+    ->where($column, $id)
+    ->done();
 
-$query->execute([
-    'id' => $id
-]);
+if($table == 'posts'){
+    if ($query){
+        $db->delete('post_tags')
+            ->where('tag_post_id', $id)
+            ->done();
+    }
+}
 
 header('Location:' . $_SERVER['HTTP_REFERER']);
 exit;

@@ -49,17 +49,8 @@
                         <li>
                             <label>Subject Tag</label>
                             <div class="form-content">
-                                <input type="text" name="post_tags" value="<?php
-                                if(post('post_tags')){
-                                    echo post('post_tags');
-                                }else{
-                                    $tagsHTML = '';
-                                    foreach ($tags as $tag){
-                                        echo $tag['tag_name'] .'\n';
-                                    }
-                                    echo rtrim($tagsHTML, '\n');
-                                }
-                                ?>" class="tagsinput">
+                                <input type="text" name="post_tags" value="<?=post('post_tags') ? post('post_tags') : implode(',', $postTags)?>" class="tagsinput">
+
                                 <p>Please enter between each tag.</p>
                             </div>
                         </li>

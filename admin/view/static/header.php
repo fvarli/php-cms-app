@@ -42,7 +42,7 @@
         <ul dropdown>
 
             <li>
-                <a href="#">
+                <a href="<?=site_url();?>">
                     <span class="fa fa-home"></span>
                     <span class="title"><?= settings('title') ?></span>
                 </a>

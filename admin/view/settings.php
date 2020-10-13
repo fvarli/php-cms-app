@@ -18,6 +18,9 @@
                     <a href="#">Profile Settings</a>
                 </li>
                 <li>
+                    <a href="#">Comment Settings</a>
+                </li>
+                <li>
                     <a href="#">Theme Settings</a>
                 </li>
                 <li>
@@ -87,6 +90,29 @@
                             <label>LinkedIn</label>
                             <div class="form-content">
                                 <input type="text" name="settings[linkedin]" value="<?= settings('linkedin') ?>">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div tab-content>
+                    <ul>
+                        <li>
+                            <label>Visitor Comment</label>
+                            <div class="form-content">
+                                <select name="settings[visitor_comment]" id="">
+                                    <option value="1" <?=settings('visitor_comment') == 1 ? 'selected' : null;?> >Verified</option>
+                                    <option value="2" <?=settings('visitor_comment') == 2 ? 'selected' : null;?>>Not Verified</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <label>User Comment</label>
+                            <div class="form-content">
+                                <select name="settings[user_comment]" id="">
+                                    <option value="1" <?=settings('user_comment') == 1 ? 'selected' : null;?> >Verified</option>
+                                    <option value="2" <?=settings('user_comment') == 2 ? 'selected' : null;?> >Not Verified</option>
+                                </select>
                             </div>
                         </li>
                     </ul>

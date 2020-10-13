@@ -399,16 +399,21 @@ class basicdb extends \PDO
         ];
     }
 
-    public function showPagination($url, $class = 'active')
+    public function showPagination($url, $class = 'active', $bootstrap = false)
     {
         if ($this->totalRecord > $this->paginationLimit) {
             for ($i = $this->page - 5; $i < $this->page + 5 + 1; $i++) {
                 if ($i > 0 && $i <= $this->pageCount) {
-                    $this->html .= str_replace(
-                        ['[active]', '[text]', '[url]'],
-                        [($i == $this->page ? $class : null), $i, str_replace('[page]', $i, $url)],
-                        $this->paginationItem
-                    );
+                    if($bootstrap){
+                        $this->html .= '<li class="page-item ' . ($i == $this->page ? $class : null) . '"><a class="page-link" href="' . str_replace('[page]', $i, $url) . '">' . $i . '</a></li>';
+                    }
+                    else{
+                        $this->html .= str_replace(
+                            ['[active]', '[text]', '[url]'],
+                            [($i == $this->page ? $class : null), $i, str_replace('[page]', $i, $url)],
+                            $this->paginationItem
+                        );
+                    }
                 }
             }
             return $this->html;

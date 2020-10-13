@@ -4,6 +4,9 @@ session_start();
 ob_start();
 date_default_timezone_set('Europe/Istanbul');
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 function load_class($class_name){
     require __DIR__ . '/classes/' . strtolower($class_name) . '.php';
 }
@@ -23,3 +26,4 @@ require __DIR__ . '/settings.php';
 foreach (glob(__DIR__. '/helper/*.php') as $helper_file){
     require $helper_file;
 }
+
