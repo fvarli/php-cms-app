@@ -2,6 +2,10 @@
 
 if (route(1) == 'category') {
     require controller('blog_category');
+} elseif (route(1) == 'search'){
+    require controller('search');
+}elseif (route(1) == 'tag'){
+    require controller('tag');
 } else {
 
     if ($post_url = route(1)) {
@@ -9,19 +13,17 @@ if (route(1) == 'category') {
     } else {
 
         $meta = [
-            'title' => settings('title'),
-            'description' => settings('description'),
+            'title' => settings('blog_title'),
+            'description' => settings('blog_description'),
             'keywords' => settings('keywords')
         ];
 
         $totalRecord = $db->from('posts')
             ->select('count(post_id) as total')
-            ->join('categories', 'FIND_IN_SET(categories.category_id, posts.post_categories)')
             ->where('post_status', 1)
-            ->groupBy('posts.post_id')
             ->total();
 
-        $pageLimit = 5;
+        $pageLimit = settings('blog_pagination');
         $pageParam = 'page';
         $pagination = $db->pagination($totalRecord, $pageLimit, $pageParam);
 

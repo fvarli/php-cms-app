@@ -57,11 +57,11 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php foreach ($menu['submenu'] as $k => $submenu):?>
-                                    <a class="dropdown-item" href="<?=$submenu['url'];?>"><?=$submenu['title'];?></a>
+                                    <a class="dropdown-item" href="<?=menu_url($submenu['url']);?>"><?=$submenu['title'];?></a>
                                 <?endforeach;?>
                             </div>
                         <?php else: ?>
-                            <a class="nav-link" href="<?=$menu['url'];?>"><?=$menu['title'];?></a>
+                            <a class="nav-link" href="<?=menu_url($menu['url']);?>"><?=$menu['title'];?></a>
                         <?endif;?>
 
                     </li>
@@ -72,8 +72,8 @@
                 </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0 mr-3">
-                <input class="form-control mr-sm-2" type="search" placeholder="<?= settings('search_placeholder') ?>"
+            <form action="<?=site_url('blog/search');?>" method="get" class="form-inline my-2 my-lg-0 mr-3">
+                <input class="form-control mr-sm-2" name="query" value="<?=get('name');?>" type="search" placeholder="<?= settings('search_placeholder') ?>"
                        aria-label="Search">
                 <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
             </form>
@@ -85,7 +85,9 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="<?= site_url('my_profile') ?>">My Profile</a>
-                        <a class="dropdown-item" href="<?= admin_url('')?>">Admin Side</a>
+                        <?php if(session('user_rank') == 1):?>
+                            <a class="dropdown-item" href="<?= admin_url('')?>">Admin Side</a>
+                        <?php endif;?>
                         <a class="dropdown-item" href="<?= site_url('logout') ?>">Logout</a>
                     </div>
                 </div>

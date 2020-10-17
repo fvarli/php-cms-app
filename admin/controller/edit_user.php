@@ -30,6 +30,9 @@ if (post('submit')){
             ->set($data);
 
         if($query){
+            if($id = session('user_id')){
+                $_SESSION['user_permissions'] = $data['user_permissions'];
+            }
             header('Location: '.admin_url('users'));
         }else{
             $error = "Something went wrong.";

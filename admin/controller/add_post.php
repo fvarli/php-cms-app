@@ -14,7 +14,7 @@ $all_tags = $db->from('tags')
 
 $tagsArr = [];
 
-foreach ($all_tags as $tags){
+foreach ($all_tags as $tags) {
     $tagsArr[] = trim(htmlspecialchars($tags['tag_name']));
 }
 
@@ -27,7 +27,7 @@ if (post('submit')) {
     }
     $post_content = post('post_content');
     $post_short_content = post('post_short_content');
-    $post_categories = implode(',', post('post_categories'));
+    $post_categories = post('post_categories');
     $post_status = post('post_status');
     $post_tags = post('post_tags');
     $post_seo = json_encode(post('post_seo'));
@@ -36,6 +36,7 @@ if (post('submit')) {
         $error = 'Please enter post name.';
     } else {
 
+        $post_categories = implode(',', $post_categories);
         // check if there is same subject
         $query = $db->from('posts')
             ->where('post_url', $post_url)
@@ -60,39 +61,41 @@ if (post('submit')) {
 
                 $postId = $db->lastId();
 
-                $post_tags = explode(",", $post_tags);
+                $post_tags = array_map('trim', explode(",", $post_tags));
+                $post_tags = array_filter($post_tags);
+                if (count($post_tags) > 0) {
+                    foreach ($post_tags as $tag) {
+                        //check if there is tag or not
+                        $row = $db->from('tags')
+                            ->where('tag_url', permalink($tag))
+                            ->first();
 
-                foreach ($post_tags as $tag) {
-                    //check if there is tag or not
-                    $row = $db->from('tags')
-                        ->where('tag_url', permalink($tag))
-                        ->first();
 
+                        if (!$row) {
+                            $tagInsert = $db->insert('tags')
+                                ->set([
+                                    'tag_name' => $tag,
+                                    'tag_url' => permalink($tag)
+                                ]);
+                            $tagId = $db->lastId();
+                        } else {
+                            $tagId = $row['tag_id'];
+                        }
 
-                    if (!$row) {
-                        $tagInsert = $db->insert('tags')
-                            ->set([
-                                'tag_name' => $tag,
-                                'tag_url' => permalink($tag)
-                            ]);
-                        $tagId = $db->lastId();
-                    } else {
-                        $tagId = $row['tag_id'];
-                    }
+                        // is there a tag related to the subject?
 
-                    // is there a tag related to the subject?
+                        $row = $db->from('post_tags')
+                            ->where('tag_post_id', $postId)
+                            ->where('tag_id', $tagId)
+                            ->first();
 
-                    $row = $db->from('post_tags')
-                        ->where('tag_post_id', $postId)
-                        ->where('tag_id', $tagId)
-                        ->first();
-
-                    if (!$row) {
-                        $db->insert('post_tags')
-                            ->set([
-                                'tag_post_id' => $postId,
-                                'tag_id' => $tagId
-                            ]);
+                        if (!$row) {
+                            $db->insert('post_tags')
+                                ->set([
+                                    'tag_post_id' => $postId,
+                                    'tag_id' => $tagId
+                                ]);
+                        }
                     }
                 }
                 header('Location:' . admin_url('posts'));

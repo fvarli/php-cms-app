@@ -22,6 +22,7 @@ class Blog {
             ->join('categories', 'find_in_set(category_id, post_categories)')
             ->where('post_url', $post_url)
             ->where('post_status', 1)
+            ->groupBy('post_id')
             ->first();
     }
 
@@ -32,6 +33,15 @@ class Blog {
             ->where('post_id', $post_id)
             ->where('post_status', 1)
             ->first();
+    }
+
+    public static function getRandomTags($limit = 10)
+    {
+        global $db;
+        return $db->from('tags')
+            ->orderBy('', 'rand()')
+            ->limit(0, $limit)
+            ->all();
     }
 
 }

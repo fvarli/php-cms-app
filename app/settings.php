@@ -3,6 +3,12 @@
 $settings["title"] = "Blog Website";
 $settings["description"] = "Description";
 $settings["keywords"] = "Keywords";
+$settings["blog_title"] = "My Blog";
+$settings["blog_description"] = "My Blog";
+$settings["reference_title"] = "References";
+$settings["reference_description"] = "References";
+$settings["search_title"] = "Results for %s";
+$settings["search_description"] = "Results for %s";
 $settings["about_me"] = "Enthusiastic software developer with 1+ years of experience participating in the complete product development lifecycle of successfully launched applications.
 
 I currently work as a freelance software developer in Istanbul, Turkey. I have been developing professionally for a couple of months.";
@@ -20,3 +26,7 @@ $settings["theme"] = "theme-one";
 $settings["maintenance_mode"] = "2";
 $settings["maintenance_mode_title"] = "Site Maintenance Mode";
 $settings["maintenance_mode_description"] = "Sorry for the inconvenience but we are performing some maintenance at the moment. If you need to you can always contact us, otherwise, we will be back online shortly! - The Team";
+$settings["blog_pagination"] = "1";
+$settings["category_pagination"] = "1";
+$settings["tag_pagination"] = "1";
+$settings["search_pagination"] = "1";

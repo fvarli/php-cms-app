@@ -41,3 +41,7 @@ function cut_text($str, $limit = 220){
     }
     return $str;
 }
+
+function menu_url($url){
+    return site_url($url);
+}

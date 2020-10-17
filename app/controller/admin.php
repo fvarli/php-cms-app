@@ -1,76 +1,130 @@
 <?php
 
-if(!route(1)){
+if (!route(1)) {
     $route[1] = 'index';
 }
 
-if(!file_exists(admin_controller(route(1)))){
+if (!file_exists(admin_controller(route(1)))) {
     $route[1] = 'index';
 }
 
-if (!session('user_rank') || session('user_rank') == 3){
+if (!session('user_rank') || session('user_rank') == 3) {
     $route[1] = 'login';
 }
 
 $menu_list = [
-    'index' => [
+    [
+        'url' => 'index',
         'title' => 'Home',
         'icon' => 'tachometer',
         'permissions' => [
             'show' => 'Show'
         ]
     ],
-    'menu' => [
+    [
+        'url' => 'posts',
+        'title' => 'Blog',
+        'icon' => 'rss',
+        'permissions' => [
+            'show' => 'Show',
+            'add' => 'Add',
+            'edit' => 'Edit',
+            'delete' => 'Delete'
+        ],
+        'submenu' => [
+            [
+                'url' => 'posts',
+                'title' => 'Subjects',
+            ],
+            [
+                'url' => 'tags',
+                'title' => 'Tags',
+                'permissions' => [
+                    'show' => 'Show',
+                    'add' => 'Add',
+                    'edit' => 'Edit',
+                    'delete' => 'Delete'
+                ],
+            ],
+            [
+                'url' => 'categories',
+                'title' => 'Categories',
+                'permissions' => [
+                    'show' => 'Show',
+                    'add' => 'Add',
+                    'edit' => 'Edit',
+                    'delete' => 'Delete'
+                ],
+            ],
+            [
+                'url' => 'comments',
+                'title' => 'Comments',
+                'permissions' => [
+                    'show' => 'Show',
+                    'edit' => 'Edit',
+                    'delete' => 'Delete'
+                ],
+            ],
+        ],
+    ],
+    [
+        'url' => 'menu',
         'title' => 'Menu',
         'icon' => 'bars',
         'permissions' => [
             'show' => 'Show',
-            'add'  => 'Add',
+            'add' => 'Add',
             'edit' => 'Edit',
             'delete' => 'Delete'
         ]
     ],
-    'pages' => [
+    [
+        'url' => 'pages',
         'title' => 'Pages',
         'icon' => 'file',
         'permissions' => [
             'show' => 'Show',
-            'add'  => 'Add',
+            'add' => 'Add',
             'edit' => 'Edit',
             'delete' => 'Delete'
         ]
     ],
-    'posts' => [
-        'title' => 'Subjects',
-        'icon' => 'rss',
+    [
+        'url' => 'references',
+        'title' => 'References',
+        'icon' => 'photo',
         'permissions' => [
             'show' => 'Show',
-            'add'  => 'Add',
+            'add' => 'Add',
             'edit' => 'Edit',
             'delete' => 'Delete'
+        ],
+        'submenu' => [
+            [
+                'url' => 'reference_categories',
+                'title' => 'Categories',
+                'permissions' => [
+                    'show' => 'Show',
+                    'add' => 'Add',
+                    'edit' => 'Edit',
+                    'delete' => 'Delete'
+                ]
+            ]
         ]
     ],
-    'categories' => [
-        'title' => 'Categories',
-        'icon' => 'folder',
-        'permissions' => [
-            'show' => 'Show',
-            'add'  => 'Add',
-            'edit' => 'Edit',
-            'delete' => 'Delete'
-        ]
-    ],
-    'contact' => [
+    [
+        'url' => 'contact',
         'title' => 'Contact Messages',
         'icon' => 'envelope',
         'permissions' => [
             'show' => 'Show',
-            'edit'  => 'Edit',
+            'edit' => 'Edit',
             'send' => 'Send',
             'delete' => 'Delete'
         ]
     ],
-    'users' =>[
+    [
+        'url' => 'users',
         'title' => 'Users',
         'icon' => 'user',
         'permissions' => [
@@ -83,8 +137,8 @@ $menu_list = [
         //    'users' => 'User List'
         //]
     ],
-
-    'settings' => [
+    [
+        'url' => 'settings',
         'title' => 'Settings',
         'icon' => 'cog',
         'permissions' => [

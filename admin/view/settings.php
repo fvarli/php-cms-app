@@ -29,6 +29,10 @@
                 <li>
                     <a href="#">SMTP Settings</a>
                 </li>
+                <li>
+                    <a href="#">Pagination Settings</a>
+                </li>
+
 
             </ul>
         </div>
@@ -54,6 +58,42 @@
                             <label>Site Keywords</label>
                             <div class="form-content">
                                 <input type="text" name="settings[keywords]" value="<?= settings('keywords') ?>">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Blog Title</label>
+                            <div class="form-content">
+                                <input type="text" name="settings[blog_title]" value="<?= settings('blog_title') ?>">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Blog Description</label>
+                            <div class="form-content">
+                                <input type="text" name="settings[blog_description]" value="<?= settings('blog_description') ?>">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Reference Title</label>
+                            <div class="form-content">
+                                <input type="text" name="settings[reference_title]" value="<?= settings('reference_title') ?>">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Reference Description</label>
+                            <div class="form-content">
+                                <input type="text" name="settings[reference_description]" value="<?= settings('reference_description') ?>">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Search Title</label>
+                            <div class="form-content">
+                                <input type="text" name="settings[search_title]" value="<?= settings('search_title') ?>">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Search Description</label>
+                            <div class="form-content">
+                                <input type="text" name="settings[search_description]" value="<?= settings('search_description') ?>">
                             </div>
                         </li>
                     </ul>
@@ -242,6 +282,35 @@
                             <div class="form-content">
                                 <input type="text" name="settings[smtp_email_sender_name]"
                                        value="<?= settings('smtp_email_sender_name') ?>">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div tab-content>
+                    <ul>
+                        <li>
+                            <label>Blog Pagination</label>
+                            <div class="form-content">
+                                <input type="text" name="settings[blog_pagination]" value="<?= settings('blog_pagination') ?>">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Category Pagination</label>
+                            <div class="form-content">
+                                <input type="text" name="settings[category_pagination]" value="<?= settings('category_pagination') ?>">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Tag Pagination</label>
+                            <div class="form-content">
+                                <input type="text" name="settings[tag_pagination]" value="<?= settings('tag_pagination') ?>">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Search Pagination</label>
+                            <div class="form-content">
+                                <input type="text" name="settings[search_pagination]" value="<?= settings('search_pagination') ?>">
                             </div>
                         </li>
                     </ul>

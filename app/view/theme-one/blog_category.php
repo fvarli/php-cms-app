@@ -42,16 +42,16 @@
                             <ul class="pagination">
                                 <li class="page-item">
                                     <a class="page-link"
-                                       href="<?= site_url('blog/category/' . $category['category_url'] . '?' . $pageParam . '=' . $db->prevPage()); ?>"
+                                       href="<?= site_url('blog/category/' . $category['category_url'] . '?' . $pageParam . '=' . $db->prevPage()) ?>"
                                        aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                         <span class="sr-only">Previous</span>
                                     </a>
                                 </li>
-                                <?= $db->showPagination(site_url('blog/category' . $category['category_url'] . '?' . $pageParam . '=[page]'), 'active', true); ?>
+                                <?= $db->showPagination(site_url('blog/category/' . $category['category_url'] . '?' . $pageParam . '=[page]'), 'active', true) ?>
                                 <li class="page-item">
                                     <a class="page-link"
-                                       href="<?= site_url('blog/category' . $category['category_url'] . '?' . $pageParam . '=' . $db->nextPage()); ?>"
+                                       href="<?= site_url('blog/category/' . $category['category_url'] . '?' . $pageParam . '=' . $db->nextPage()) ?>"
                                        aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                         <span class="sr-only">Next</span>
@@ -88,15 +88,9 @@
                 <i class="fa fa-hashtag"></i>
                 Tags
             </h4>
-            <a href="#" class="badge badge-light badge-pill">html5 video</a>
-            <a href="#" class="badge badge-light badge-pill">html5 audio</a>
-            <a href="#" class="badge badge-light badge-pill">css ie7</a>
-            <a href="#" class="badge badge-light badge-pill">jquery dersleri</a>
-            <a href="#" class="badge badge-light badge-pill">css3 calc()</a>
-            <a href="#" class="badge badge-light badge-pill">php array_shift()</a>
-            <a href="#" class="badge badge-light badge-pill">gökhan toy</a>
-            <a href="#" class="badge badge-light badge-pill">aile</a>
-            <a href="#" class="badge badge-light badge-pill">hayat</a>
+            <?php foreach (Blog::getRandomTags(6) as $tag):?>
+                <a href="<?=site_url('blog/tag/'.$tag['tag_url']);?>" class="badge badge-light badge-pill"><?=$tag['tag_name'];?></a>
+            <?php endforeach;?>
         </div>
     </div>
 </div>

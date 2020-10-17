@@ -89,3 +89,26 @@
     color: #fff;
     font-size: 20px;
 }
+
+.filter {
+    background: #fff;
+    box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, .1);
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.filter ul li {
+    float: left;
+    padding: 0 15px;
+}
+
+.filter ul li a {
+    display: block;
+    line-height: 35px;
+    color: #444;
+    padding: 0 5px;
+}
+
+.filter ul li.active a {
+    box-shadow: 0 -2px 0 0 #00a0d2 inset;
+}

@@ -2,7 +2,7 @@
 
     <div class="box-">
         <h1>
-            Add Subject
+            Add Reference
         </h1>
     </div>
 
@@ -21,54 +21,49 @@
             </ul>
         </div>
 
-        <form action="" method="post" class="form label">
+        <form action="" method="post" class="form label" enctype="multipart/form-data">
             <div class="tab-container">
                 <div tab-content>
                     <ul>
                         <li>
-                            <label>Subject Title</label>
+                            <label>Reference Title</label>
                             <div class="form-content">
-                                <input type="text" name="post_title" value="<?= post('post_title') ?>">
+                                <input type="text" name="reference_title" value="<?= post('reference_title') ?>">
                             </div>
                         </li>
                         <li>
-                            <label>Subject Short Content</label>
+                            <label>Reference Content</label>
                             <div class="form-content">
-                                <textarea name="post_short_content" class="short-editor" id="" cols="30"
-                                          rows="10"><?= post('post_short_content') ?></textarea>
+                                <textarea name="reference_content"
+                                          class="editor-short"><?= post('reference_content') ?></textarea>
                             </div>
                         </li>
                         <li>
-                            <label>Subject Content</label>
+                            <label>Reference Category</label>
                             <div class="form-content">
-                                <textarea name="post_content" class="editor" id="" cols="30"
-                                          rows="10"><?= post('post_content') ?></textarea>
-                            </div>
-                        </li>
-                        <li>
-                            <label>Subject Tag</label>
-                            <div class="form-content">
-                                <input type="text" name="post_tags" value="<?=post('post_tags')?>" class="tagsinput">
-                                <p>Please enter between each tag.</p>
-                            </div>
-                        </li>
-                        <li>
-                            <label>Subject Category</label>
-                            <div class="form-content">
-                                <select name="post_categories[]" id="" multiple>
+                                <select name="reference_categories[]" multiple size="6">
                                     <?php foreach ($categories as $category): ?>
-                                        <option value="<?= $category['category_id']; ?>"><?= $category['category_name']; ?></option>
+                                        <option <?=post('reference_categories') && in_array($category['category_id'], post('reference_categories')) ? 'selected' : null?> value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                         </li>
                         <li>
-                            <label>Subject Status</label>
+                            <label>Technologies</label>
                             <div class="form-content">
-                                <select name="post_status" id="">
-                                    <option value="1" <?=post('post_status') == 1 ? 'selected' : null;?>>Published</option>
-                                    <option value="2" <?=post('post_status') == 2 ? 'selected' : null;?>>Draft</option>
-                                </select>
+                                <input type="text" name="reference_tags" value="<?= post('reference_tags') ?>" class="tagsinput">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Reference Link</label>
+                            <div class="form-content">
+                                <input type="text" name="reference_demo" value="<?= post('reference_demo') ?>">
+                            </div>
+                        </li>
+                        <li>
+                            <label>Reference Image</label>
+                            <div class="form-content">
+                                <input type="file" name="reference_image">
                             </div>
                         </li>
                     </ul>
@@ -78,20 +73,20 @@
                         <li>
                             <label>SEO Url</label>
                             <div class="form-content">
-                                <input type="text" name="post_url" value="<?= post('post_url') ?>">
-                                <p>If you don't enter, it takes post name.</p>
+                                <input type="text" name="reference_url" value="<?= post('reference_url') ?>">
+                                <p>If you don't enter, it takes reference name.</p>
                             </div>
                         </li>
                         <li>
                             <label>SEO Title</label>
                             <div class="form-content">
-                                <input type="text" name="post_seo[title]">
+                                <input type="text" name="reference_seo[title]">
                             </div>
                         </li>
                         <li>
                             <label>SEO Description</label>
                             <div class="form-content">
-                                <textarea name="post_seo[description]" class="editor" cols="30" rows="5"></textarea>
+                                <textarea name="reference_seo[description]" cols="30" rows="5"></textarea>
                             </div>
                         </li>
                     </ul>
@@ -99,7 +94,7 @@
                 <ul>
                     <li class="submit">
                         <input type="hidden" name="submit" value="1">
-                        <button type="submit">Save</button>
+                        <button type="submit">Send</button>
                     </li>
                 </ul>
             </div>
@@ -107,7 +102,7 @@
     </div>
 
     <script>
-        let tags = ['<?=implode("','",$tagsArr)?>'];
+        var tags = [];
     </script>
 
 <?php require admin_view('static/footer') ?>
